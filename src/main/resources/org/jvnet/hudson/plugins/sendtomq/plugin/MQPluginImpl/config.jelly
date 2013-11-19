@@ -1,0 +1,33 @@
+<?jelly escape-by-default='true'?>
+
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    <f:section title="${%SendToMQ}" name="pluginConfiguration">
+        <f:entry title="${%Host}">
+            <f:textbox id="txt_MQPlugin_host" name="host" value="${it.pluginConfiguration.host}"/>
+        </f:entry>
+        <f:entry title="${%Port}">
+            <f:textbox id="txt_MQPlugin_port" name="port" value="${it.pluginConfiguration.port}"/>
+        </f:entry>
+        <f:entry title="${%Queue}">
+            <f:textbox id="txt_MQPlugin_queue" name="queue" value="${it.pluginConfiguration.queue}"/>
+        </f:entry>
+        <f:entry title="${%Delivery Mode}">
+            <select id="sel_MQPlugin_deliveryMode" name="deliveryMode">
+                <f:option value="1" selected="${it.pluginConfiguration.deliveryMode == 1}">${%Non Persistent}</f:option>
+                <f:option value="2" selected="${it.pluginConfiguration.deliveryMode == 2}">${%Persistent}</f:option>
+            </select>
+        </f:entry>
+        <f:entry title="${%Ack}">
+            <select id="sel_MQPlugin_ack" name="ack">
+                <f:option value="1" selected="${it.pluginConfiguration.ack == 1}">Auto</f:option>
+                <f:option value="2" selected="${it.pluginConfiguration.ack == 2}">Client</f:option>
+            </select>
+        </f:entry>
+        <f:entry title="${%User}">
+            <f:textbox id="txt_MQPlugin_user" name="user" value="${it.pluginConfiguration.user}"/>
+        </f:entry>
+        <f:entry title="${%Password}">
+            <f:password id="txt_MQPlugin_password"  name="password" value="${it.pluginConfiguration.password}"/>
+        </f:entry>
+    </f:section>
+</j:jelly>
